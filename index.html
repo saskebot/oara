@@ -1,225 +1,867 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexus - Modern Website</title>
+  <title>BH FOR ALL - عن المنتجات الطبيعية مدح</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <style>
     :root {
-      --primary: #6366f1;
-      --dark: #0f172a;
-      --light: #f8fafc;
+      --primary: #15803d;
+      --gold: #eab308;
+      --dark: #052e16;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
-      color: var(--light);
-      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f8fafc;
+      color: #1f2937;
+      line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* Navbar */
-    nav {
+    /* Header */
+    header {
+      background: var(--dark);
+      color: white;
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(10px);
       z-index: 1000;
-      padding: 1rem 5%;
+      padding: 15px 5%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      justify-content: space-between;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #6366f1, #a5b4fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #4ade80;
+      animation: logoPop 1.2s ease forwards;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 25px;
       list-style: none;
     }
 
     .nav-links a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
     }
 
-    .nav-links a:hover {
-      color: var(--primary);
+    .nav-links a:hover { color: #4ade80; transform: scale(1.1); }
+
+    .cart-icon {
+      position: relative;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .cart-icon:hover { transform: scale(1.2); }
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      background: #ef4444;
+      color: white;
+      font-size: 0.85rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
       height: 100vh;
+      background: linear-gradient(rgba(5,46,22,0.85), rgba(5,46,22,0.85)), url('https://images.unsplash.com/photo-1540420773420-336661e90f6b?q=80&w=1920') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
+      color: white;
+      margin-top: 70px;
     }
 
     .hero-content {
-      max-width: 800px;
-      padding: 0 20px;
-      z-index: 2;
+      max-width: 900px;
+      animation: heroFade 1.8s ease forwards;
     }
 
     .hero h1 {
-      font-size: 4.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, #c4d0ff, #e0e7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 4.2rem;
+      font-weight: 900;
+      margin-bottom: 15px;
+      line-height: 1.1;
+      animation: titleSlide 1.5s ease forwards;
     }
 
-    .hero p {
-      font-size: 1.4rem;
-      color: #cbd5e1;
-      margin-bottom: 2rem;
+    .hero .subtitle {
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: subtitlePop 2s ease 0.8s forwards;
     }
 
-    .btn {
-      padding: 14px 32px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-weight: 600;
+    /* Category Teasers on Home */
+    .home-content {
+      padding: 80px 5%;
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #4f46e5;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
-    }
-
-    /* Features */
-    .section {
-      padding: 100px 5%;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 3rem;
-      color: white;
-    }
-
-    .features {
+    .categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 30px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      border-radius: 20px;
-      padding: 2.5rem;
+    .category-card {
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      cursor: pointer;
       transition: all 0.4s;
-      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .card:hover {
-      transform: translateY(-15px);
-      background: rgba(99, 102, 241, 0.1);
-      border-color: var(--primary);
+    .category-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 25px 40px rgba(21,128,61,0.3);
     }
 
-    .card h3 {
-      font-size: 1.6rem;
-      margin: 1.5rem 0;
+    .category-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
     }
 
-    /* Footer */
-    footer {
-      background: #020617;
-      padding: 60px 5% 30px;
+    .category-info {
+      padding: 25px;
       text-align: center;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 3rem;
-      }
-      .nav-links {
-        display: none;
-      }
+    .category-info h3 {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .motivational {
+      font-size: 1.35rem;
+      color: var(--primary);
+      font-weight: bold;
+      animation: pulseText 2s infinite;
+    }
+
+    /* Category View */
+    .category-view {
+      display: none;
+      padding: 90px 5% 40px;
+    }
+
+    .category-view.active {
+      display: block;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 30px;
+      transition: all 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #166534;
+      transform: translateX(-8px);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: all 0.4s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-12px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 18px;
+    }
+
+    .product-info h3 {
+      font-size: 1.35rem;
+    }
+
+    .price {
+      font-size: 1.6rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin: 10px 0;
+    }
+
+    .add-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .add-btn:hover {
+      background: #16a34a;
+    }
+
+    /* Cart Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      width: 95%;
+      max-width: 620px;
+      border-radius: 25px;
+      padding: 25px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .total {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    /* Comments Section */
+    .comments-section {
+      background: #052e16;
+      color: white;
+      padding: 80px 5%;
+    }
+
+    .comments-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .top-comments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1300px;
+      margin: 0 auto 60px;
+    }
+
+    .comment-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .all-comments {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #15803d;
+      color: white;
+      padding: 16px 24px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(21,128,61,0.4);
+      display: none;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      z-index: 3000;
+      animation: toastPop 0.4s ease;
+    }
+
+    /* Animations */
+    @keyframes logoPop {
+      0% { transform: scale(0.6); opacity: 0; }
+      80% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes heroFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes titleSlide {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes subtitlePop {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes pulseText {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes toastPop {
+      0% { transform: translateX(-50%) scale(0.6); opacity: 0; }
+      100% { transform: translateX(-50%) scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">NEXUS</div>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">BH FOR ALL</div>
+    
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Features</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#" onclick="showHome()">الرئيسية</a></li>
+      <li><a href="#" onclick="showCategory('skincare')">العناية بالبشرة</a></li>
+      <li><a href="#" onclick="showCategory('food')">المشروبات والغذاء</a></li>
+      <li><a href="#" onclick="document.getElementById('comments').scrollIntoView({behavior:'smooth'})">التعليقات</a></li>
     </ul>
-  </nav>
 
-  <!-- Hero Section -->
+    <div class="cart-icon" onclick="showCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cart-count">0</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Welcome to the Future</h1>
-      <p>Build something amazing with modern design and powerful functionality.</p>
-      <button class="btn btn-primary" onclick="alert('Thank you for clicking! 🚀')">
-        Get Started Now
+      <h1>عن المنتجات الطبيعية مدح</h1>
+      <p class="subtitle">BH FOR ALL 🌿 • نقاء الطبيعة في كل قطرة وكل لقمة</p>
+      <button onclick="showHome()" class="btn" style="background:#4ade80;color:#052e16;padding:16px 50px;border-radius:50px;font-size:1.3rem;font-weight:700;margin-top:20px;">
+        ابدأ التسوق الآن
       </button>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="section">
-    <h2>Why Choose Us</h2>
-    <div class="features">
-      <div class="card">
-        <h3>⚡ Lightning Fast</h3>
-        <p>Optimized performance that loads in under a second. Built for speed and efficiency.</p>
+  <!-- HOME VIEW -->
+  <div id="home-view" class="home-content">
+    <div class="categories">
+      <!-- Skin Care -->
+      <div class="category-card" onclick="showCategory('skincare')">
+        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0c?q=80&w=800" alt="عناية بالبشرة">
+        <div class="category-info">
+          <h3>العناية بالبشرة</h3>
+          <p class="motivational">اعتني ببشرتك بقوة الطبيعة 💧🌸</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>🎨 Beautiful Design</h3>
-        <p>Modern, clean, and responsive design that looks perfect on every device.</p>
+
+      <!-- Food & Drinks -->
+      <div class="category-card" onclick="showCategory('food')">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a9c?q=80&w=800" alt="مشروبات وغذاء">
+        <div class="category-info">
+          <h3>المشروبات والمواد الغذائية</h3>
+          <p class="motivational">صحتك تبدأ من الطبيعة 🍯🌿</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>🔒 Secure & Reliable</h3>
-        <p>Enterprise-grade security with best practices built in from the start.</p>
-      </div>
+    </div>
+  </div>
+
+  <!-- SKINCARE VIEW -->
+  <div id="skincare-view" class="category-view">
+    <button class="back-btn" onclick="showHome()">
+      <i class="fas fa-arrow-right"></i> عودة للرئيسية
+    </button>
+    <h2 style="text-align:center;color:var(--dark);margin-bottom:40px;font-size:2.8rem;">🧴 قسم العناية بالبشرة</h2>
+    <p style="text-align:center;font-size:1.4rem;color:var(--primary);margin-bottom:40px;animation:pulseText 2s infinite;">
+      بشرتك تستحق الأفضل… فقط من الطبيعة النقية 🌺
+    </p>
+    <div class="products-grid" id="skincare-products"></div>
+  </div>
+
+  <!-- FOOD VIEW -->
+  <div id="food-view" class="category-view">
+    <button class="back-btn" onclick="showHome()">
+      <i class="fas fa-arrow-right"></i> عودة للرئيسية
+    </button>
+    <h2 style="text-align:center;color:var(--dark);margin-bottom:40px;font-size:2.8rem;">🥃 قسم المشروبات والمواد الغذائية</h2>
+    <p style="text-align:center;font-size:1.4rem;color:var(--primary);margin-bottom:40px;animation:pulseText 2s infinite;">
+      غذاء طبيعي = حياة أقوى وأصح 🍯🌱
+    </p>
+    <div class="products-grid" id="food-products"></div>
+  </div>
+
+  <!-- COMMENTS SECTION -->
+  <section id="comments" class="comments-section">
+    <div class="comments-header">
+      <h2 style="font-size:2.8rem;">💬 ٤٠ تعليق من عملائنا</h2>
+      <p style="font-size:1.3rem;margin-top:10px;">أعلى ٣ تقييمات + كل الآراء بلهجة فلسطينية عامية</p>
+    </div>
+
+    <!-- Top 3 -->
+    <div class="top-comments" id="top-comments"></div>
+
+    <!-- All Comments -->
+    <div class="all-comments" id="all-comments"></div>
+
+    <!-- Add Comment Form -->
+    <div style="max-width:700px;margin:60px auto 0;background:white;color:#052e16;border-radius:22px;padding:30px;">
+      <h3 style="text-align:center;margin-bottom:20px;">اكتب تعليقك (سيظهر فوراً)</h3>
+      <input id="comment-name" type="text" placeholder="اسمك الكريم" style="width:100%;padding:14px;border-radius:12px;border:1px solid #ddd;margin-bottom:15px;font-size:1.1rem;">
+      <select id="comment-stars" style="width:100%;padding:14px;border-radius:12px;border:1px solid #ddd;margin-bottom:15px;font-size:1.1rem;">
+        <option value="5">⭐⭐⭐⭐⭐ ممتاز</option>
+        <option value="4">⭐⭐⭐⭐ جيد جداً</option>
+        <option value="3">⭐⭐⭐ متوسط</option>
+        <option value="2">⭐⭐ مقبول</option>
+        <option value="1">⭐ سيء</option>
+      </select>
+      <textarea id="comment-text" rows="4" placeholder="رأيك بالمنتجات أو التوصيل..." style="width:100%;padding:14px;border-radius:12px;border:1px solid #ddd;font-size:1.1rem;"></textarea>
+      <button onclick="addComment()" style="width:100%;margin-top:15px;background:var(--primary);color:white;padding:16px;border:none;border-radius:14px;font-size:1.2rem;">
+        أرسل تعليقي 🌟
+      </button>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Nexus. Made with ❤️ using pure HTML, CSS & JavaScript.</p>
-  </footer>
+  <!-- CART MODAL -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <i onclick="hideCart()" class="fas fa-times" style="position:absolute;top:20px;right:25px;font-size:2rem;cursor:pointer;color:#052e16;"></i>
+      <h2 style="text-align:center;margin-bottom:25px;color:var(--dark);">🛒 سلة التسوق</h2>
+      
+      <div id="cart-items"></div>
+      
+      <div class="total" id="cart-total">المجموع: ٠ شيكل</div>
+      
+      <button onclick="showCheckout()" style="width:100%;background:#15803d;color:white;padding:18px;border:none;border-radius:16px;font-size:1.3rem;margin-top:10px;">
+        إتمام الطلب عبر واتساب 📲
+      </button>
+      
+      <p style="text-align:center;margin-top:15px;font-size:0.95rem;color:#666;">العملة: شيكل 🇵🇸</p>
+    </div>
+  </div>
 
+  <!-- CHECKOUT FORM MODAL -->
+  <div id="checkout-modal" class="modal">
+    <div class="modal-content" style="max-width:520px;">
+      <i onclick="hideCheckout()" class="fas fa-times" style="position:absolute;top:20px;right:25px;font-size:2rem;cursor:pointer;"></i>
+      <h2 style="text-align:center;margin-bottom:20px;">📍 أكمل الطلب</h2>
+      
+      <label>الاسم الكامل</label>
+      <input id="buyer-name" type="text" placeholder="اسمك" style="width:100%;padding:14px;margin:8px 0 20px;border-radius:12px;border:1px solid #ddd;">
+      
+      <label>الدولة</label>
+      <select id="country-select" onchange="updateCities()" style="width:100%;padding:14px;margin:8px 0 20px;border-radius:12px;border:1px solid #ddd;">
+        <option value="">اختر الدولة</option>
+        <option value="فلسطين">فلسطين</option>
+        <option value="الأردن">الأردن</option>
+        <option value="مصر">مصر</option>
+        <option value="السعودية">السعودية</option>
+        <option value="الإمارات">الإمارات</option>
+      </select>
+      
+      <label>مدينة الإقامة</label>
+      <select id="city-select" style="width:100%;padding:14px;margin:8px 0 20px;border-radius:12px;border:1px solid #ddd;">
+        <option value="">اختر المدينة أولاً</option>
+      </select>
+      
+      <button onclick="sendToWhatsApp()" style="width:100%;background:#25D366;color:white;padding:18px;border:none;border-radius:16px;font-size:1.3rem;margin-top:10px;">
+        أرسل الطلب على واتساب +970569673048
+      </button>
+      
+      <p style="text-align:center;font-size:0.9rem;margin-top:15px;color:#666;">
+        سنرسل لك رابط الدفع بعد تأكيد العنوان
+      </p>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast">
+    <span id="toast-text"></span>
+  </div>
+
+  <script>
+    // ==================== PRODUCTS DATA ====================
+    const products = {
+      skincare: [
+        { id: 1, name: "كريم الورد الطبيعي", price: 45, img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0c?q=80&w=800" },
+        { id: 2, name: "زيت الأرغان المغربي", price: 68, img: "https://images.unsplash.com/photo-1615485737267-2c4b5c2c4c4c?q=80&w=800" },
+        { id: 3, name: "ماسك الطين والعسل", price: 38, img: "https://images.unsplash.com/photo-1596040033229-5a4e0e6f2e2a?q=80&w=800" },
+        { id: 4, name: "صابون اللافندر يدوي", price: 28, img: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=800" },
+        { id: 5, name: "زيت جوجوبا نقي", price: 55, img: "https://images.unsplash.com/photo-1600585154340-be6161a56a9c?q=80&w=800" }
+      ],
+      food: [
+        { id: 6, name: "عسل السدر اليمني", price: 85, img: "https://images.unsplash.com/photo-1600585154340-be6161a56a9c?q=80&w=800" },
+        { id: 7, name: "شاي أعشاب الزنجبيل", price: 32, img: "https://images.unsplash.com/photo-1625772299848-2b9b9c7f5f6e?q=80&w=800" },
+        { id: 8, name: "خل التفاح العضوي", price: 42, img: "https://images.unsplash.com/photo-1596040033229-5a4e0e6f2e2a?q=80&w=800" },
+        { id: 9, name: "مكمل الكركم الذهبي", price: 58, img: "https://images.unsplash.com/photo-1540420773420-336661e90f6b?q=80&w=800" },
+        { id: 10, name: "مشروب النعناع الطبيعي", price: 25, img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0c?q=80&w=800" }
+      ]
+    }
+
+    // ==================== CART ====================
+    let cart = []
+
+    function addToCart(product) {
+      const existing = cart.find(item => item.id === product.id)
+      if (existing) {
+        existing.qty = (existing.qty || 1) + 1
+      } else {
+        cart.push({...product, qty: 1})
+      }
+      updateCartCount()
+      showToast(`✅ تمت إضافة <b>${product.name}</b> إلى السلة 🌿`, 2800)
+    }
+
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0)
+      document.getElementById('cart-count').textContent = count
+    }
+
+    function showCart() {
+      const container = document.getElementById('cart-items')
+      container.innerHTML = ''
+
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="text-align:center;padding:40px;color:#666;">السلة فارغة 🛒</p>`
+        document.getElementById('cart-total').textContent = 'المجموع: ٠ شيكل'
+        document.getElementById('cart-modal').style.display = 'flex'
+        return
+      }
+
+      let total = 0
+      cart.forEach((item, index) => {
+        const qty = item.qty || 1
+        const itemTotal = item.price * qty
+        total += itemTotal
+
+        const div = document.createElement('div')
+        div.className = 'cart-item'
+        div.innerHTML = `
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>${qty} × ${item.price} شيكل</small>
+          </div>
+          <div style="text-align:right;">
+            <span style="font-size:1.4rem;font-weight:700;">${itemTotal} شيكل</span><br>
+            <button onclick="removeFromCart(${index})" style="background:#ef4444;color:white;border:none;padding:6px 14px;border-radius:8px;margin-top:8px;font-size:0.9rem;">
+              إلغاء
+            </button>
+          </div>
+        `
+        container.appendChild(div)
+      })
+
+      document.getElementById('cart-total').innerHTML = `المجموع الكلي: <b>${total}</b> شيكل`
+      document.getElementById('cart-modal').style.display = 'flex'
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1)
+      showCart()
+      updateCartCount()
+    }
+
+    function hideCart() {
+      document.getElementById('cart-modal').style.display = 'none'
+    }
+
+    // ==================== CHECKOUT ====================
+    let citiesData = {
+      "فلسطين": ["نابلس", "رام الله", "الخليل", "جنين", "طولكرم", "قلقيلية", "بيت لحم", "غزة", "القدس", "سلفيت"],
+      "الأردن": ["عمان", "الزرقاء", "إربد", "الكرك"],
+      "مصر": ["القاهرة", "الإسكندرية", "الجيزة"],
+      "السعودية": ["الرياض", "جدة", "مكة", "المدينة"],
+      "الإمارات": ["دبي", "أبوظبي", "الشارقة"]
+    }
+
+    function updateCities() {
+      const country = document.getElementById('country-select').value
+      const citySelect = document.getElementById('city-select')
+      citySelect.innerHTML = `<option value="">اختر المدينة</option>`
+      
+      if (country && citiesData[country]) {
+        citiesData[country].forEach(city => {
+          const opt = document.createElement('option')
+          opt.value = city
+          opt.textContent = city
+          citySelect.appendChild(opt)
+        })
+      }
+    }
+
+    function showCheckout() {
+      hideCart()
+      document.getElementById('checkout-modal').style.display = 'flex'
+    }
+
+    function hideCheckout() {
+      document.getElementById('checkout-modal').style.display = 'none'
+    }
+
+    function sendToWhatsApp() {
+      const name = document.getElementById('buyer-name').value.trim() || "عميل"
+      const country = document.getElementById('country-select').value || "غير محدد"
+      const city = document.getElementById('city-select').value || "غير محدد"
+
+      if (!country || !city) {
+        alert("يرجى اختيار الدولة والمدينة")
+        return
+      }
+
+      let message = `مرحبا BH FOR ALL 🌿\n\n`
+      message += `طلب جديد:\n`
+      cart.forEach(item => {
+        message += `• ${item.name} × ${item.qty || 1} = ${item.price * (item.qty || 1)} شيكل\n`
+      })
+      const total = cart.reduce((sum, item) => sum + item.price * (item.qty || 1), 0)
+      message += `\nالمجموع: ${total} شيكل\n`
+      message += `الاسم: ${name}\n`
+      message += `الدولة: ${country}\n`
+      message += `المدينة: ${city}\n\n`
+      message += `أرجو إرسال رابط الدفع 🙏`
+
+      const encoded = encodeURIComponent(message)
+      const whatsappURL = `https://wa.me/970569673048?text=${encoded}`
+      window.open(whatsappURL, '_blank')
+      
+      // Clear cart after sending
+      setTimeout(() => {
+        cart = []
+        updateCartCount()
+        hideCheckout()
+        showToast('✅ تم إرسال الطلب على واتساب!', 3000)
+      }, 800)
+    }
+
+    // ==================== CATEGORY VIEWS ====================
+    function showCategory(type) {
+      document.getElementById('home-view').style.display = 'none'
+      document.getElementById('skincare-view').classList.remove('active')
+      document.getElementById('food-view').classList.remove('active')
+
+      if (type === 'skincare') {
+        renderProducts('skincare')
+        document.getElementById('skincare-view').classList.add('active')
+      } else if (type === 'food') {
+        renderProducts('food')
+        document.getElementById('food-view').classList.add('active')
+      }
+    }
+
+    function renderProducts(type) {
+      const container = document.getElementById(type + '-products')
+      container.innerHTML = ''
+      
+      products[type].forEach(product => {
+        const card = document.createElement('div')
+        card.className = 'product-card'
+        card.innerHTML = `
+          <img src="${product.img}" alt="${product.name}">
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <div class="price">${product.price} شيكل</div>
+            <button class="add-btn" onclick="addToCartFromRender(${product.id}, '${type}')">
+              أضف إلى السلة 🌿
+            </button>
+          </div>
+        `
+        container.appendChild(card)
+      })
+    }
+
+    function addToCartFromRender(id, type) {
+      const product = products[type].find(p => p.id === id)
+      if (product) addToCart(product)
+    }
+
+    function showHome() {
+      document.getElementById('skincare-view').classList.remove('active')
+      document.getElementById('food-view').classList.remove('active')
+      document.getElementById('home-view').style.display = 'block'
+    }
+
+    // ==================== COMMENTS SYSTEM ====================
+    let allCommentsData = [
+      { name: "محمد أبو علي", stars: 5, text: "والله يا جماعة المنتجات طبيعية ١٠٠٪ بس التوصيل تأخر يومين بس الحمدلله ممتازة 🌿" },
+      { name: "فاطمة الخليلي", stars: 5, text: "كريم الورد غير بشرتي والله 😂 بس انتظرت كتير عشان يوصل" },
+      { name: "أحمد النابلسي", stars: 5, text: "عسل السدر أحلى عسل جربتو بحياتي، بس التوصيل كان بطيء شوي" },
+      { name: "لينا قاسم", stars: 4, text: "زيت الأرغان منيح كتير بس غالي شوي والله" },
+      { name: "يوسف حماد", stars: 5, text: "شاي الزنجبيل أنقذني من البرد، منتجات طبيعية مدح بس انتظرت ٣ أيام" },
+      { name: "سارة أبو بكر", stars: 4, text: "صابون اللافندر ريحتو جنن بس التوصيل ما كان سريع" },
+      { name: "خالد الطيب", stars: 5, text: "ماسك الطين طلع رهيب، بشرتي صارت ناعمة بس صار تأخير بالشحن" },
+      { name: "ريم الرمضان", stars: 3, text: "الخل التفاح حلو بس الطعم قوي شوي والتوصيل تأخر" },
+      { name: "عمر الشوابكة", stars: 5, text: "كل المنتجات ممتازة والله، بس يا ريت التوصيل يكون أسرع" },
+      { name: "نور الدين", stars: 4, text: "زيت جوجوبا أصلي ١٠٠٪، بس انتظرت أسبوع تقريبا" },
+      { name: "هند أبو زيد", stars: 5, text: "مشروب النعناع لذيذ كتير، بس التوصيل كان بطيء" },
+      { name: "باسل الجعبري", stars: 5, text: "BH FOR ALL أفضل متجر طبيعي، بس يا ريت يحسنوا التوصيل" },
+      // الـ ٢٨ تعليق المتبقية (مولدة بطريقة عامية فلسطينية)
+      ...Array.from({length: 28}, (_, i) => {
+        const names = ["علي الجولاني","مها البرغوثي","كريم أبو خالد","رزان الشريف","حسام الطاهر","داليا مرعي","إبراهيم الزعبي","جمانة القدسي"]
+        const texts = [
+          "والله ممتاز بس التوصيل تأخر",
+          "منتجات طبيعية مدح بس انتظرت كتير",
+          "حلوة كتير بس الشحن بطيء شوي",
+          "جربت وما ندمان بس التوصيل ما كان سريع",
+          "أحلى عسل وكريمات بس يا ريت أسرع",
+          "طبيعي ١٠٠٪ والله بس صار في تأخير",
+          "مدح المنتجات بس التوصيل يحتاج تطوير",
+          "كل شي تمام بس الانتظار طويل"
+        ]
+        return {
+          name: names[i % names.length] + (i > 7 ? " " + (i+1) : ""),
+          stars: Math.floor(Math.random()*2)+4,
+          text: texts[i % texts.length]
+        }
+      })
+    ]
+
+    function renderComments() {
+      // Top 3 (أعلى تقييم)
+      const top3 = [...allCommentsData]
+        .sort((a,b) => b.stars - a.stars)
+        .slice(0, 3)
+      
+      const topContainer = document.getElementById('top-comments')
+      topContainer.innerHTML = ''
+      top3.forEach(c => {
+        const div = document.createElement('div')
+        div.className = 'comment-card'
+        div.innerHTML = `
+          <div class="stars">${'⭐'.repeat(c.stars)}</div>
+          <strong>${c.name}</strong>
+          <p style="margin:12px 0;">${c.text}</p>
+          <small style="opacity:0.8;">أعلى تقييم</small>
+        `
+        topContainer.appendChild(div)
+      })
+
+      // All 40 comments
+      const allContainer = document.getElementById('all-comments')
+      allContainer.innerHTML = ''
+      allCommentsData.forEach(c => {
+        const div = document.createElement('div')
+        div.className = 'comment-card'
+        div.innerHTML = `
+          <div class="stars">${'⭐'.repeat(c.stars)}</div>
+          <strong>${c.name}</strong>
+          <p>${c.text}</p>
+        `
+        allContainer.appendChild(div)
+      })
+    }
+
+    function addComment() {
+      const name = document.getElementById('comment-name').value.trim()
+      const stars = parseInt(document.getElementById('comment-stars').value)
+      const text = document.getElementById('comment-text').value.trim()
+
+      if (!name || !text) {
+        alert("اكتب اسمك والتعليق يا حبيبي")
+        return
+      }
+
+      // إضافة التعليق الجديد في البداية
+      allCommentsData.unshift({
+        name: name,
+        stars: stars,
+        text: text + " (تعليق جديد)"
+      })
+
+      // إعادة رسم التعليقات
+      renderComments()
+
+      // تنظيف الحقول
+      document.getElementById('comment-name').value = ''
+      document.getElementById('comment-text').value = ''
+
+      showToast(`شكراً ${name} على تعليقك 🌟`, 2500)
+    }
+
+    // ==================== TOAST ====================
+    function showToast(text, time = 2500) {
+      const toast = document.getElementById('toast')
+      document.getElementById('toast-text').innerHTML = text
+      toast.style.display = 'flex'
+      setTimeout(() => {
+        toast.style.display = 'none'
+      }, time)
+    }
+
+    // ==================== INIT ====================
+    window.onload = function() {
+      console.log('%c✅ BH FOR ALL - موقع المنتجات الطبيعية جاهز 🌿', 'color:#15803d;font-size:18px;font-weight:800')
+      
+      // Render products initially (hidden)
+      renderProducts('skincare')
+      renderProducts('food')
+      
+      // Render 40 comments
+      renderComments()
+      
+      // Welcome animation already in CSS
+      showToast('مرحبا بك في BH FOR ALL 🌱 عن المنتجات الطبيعية مدح', 2200)
+    }
+  </script>
 </body>
 </html>

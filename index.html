@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexus - Modern Website</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --dark: #0f172a;
+      --light: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #6366f1, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 20px;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #c4d0ff, #e0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #4f46e5;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Features */
+    .section {
+      padding: 100px 5%;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      color: white;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.4s;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-15px);
+      background: rgba(99, 102, 241, 0.1);
+      border-color: var(--primary);
+    }
+
+    .card h3 {
+      font-size: 1.6rem;
+      margin: 1.5rem 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #020617;
+      padding: 60px 5% 30px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">NEXUS</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to the Future</h1>
+      <p>Build something amazing with modern design and powerful functionality.</p>
+      <button class="btn btn-primary" onclick="alert('Thank you for clicking! 🚀')">
+        Get Started Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section">
+    <h2>Why Choose Us</h2>
+    <div class="features">
+      <div class="card">
+        <h3>⚡ Lightning Fast</h3>
+        <p>Optimized performance that loads in under a second. Built for speed and efficiency.</p>
+      </div>
+      <div class="card">
+        <h3>🎨 Beautiful Design</h3>
+        <p>Modern, clean, and responsive design that looks perfect on every device.</p>
+      </div>
+      <div class="card">
+        <h3>🔒 Secure & Reliable</h3>
+        <p>Enterprise-grade security with best practices built in from the start.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Nexus. Made with ❤️ using pure HTML, CSS & JavaScript.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ا OARA STORE 
-    | لبيع المنتجات</title>
-    <meta name="description" content="اكتشف أفضل المنتجات بأسعار منافسة في متجرنا. شحن سريع وضمان جودة.">
-    <link rel="stylesheet" href="style.css">
-</head>
-  
-  <title>Nexus - Modern Website</title>
+  <title>نيوهرب | منتجات طبيعية 100%</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root {
-      --primary: #6366f1;
-      --dark: #0f172a;
+      --primary: #15803d;
+      --dark: #052e16;
       --light: #f8fafc;
     }
 
@@ -27,34 +19,34 @@
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
-      color: var(--light);
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f8fafc;
+      color: #1f2937;
+      line-height: 1.7;
     }
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
+    /* Header */
+    header {
+      background: var(--dark);
+      color: white;
       padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     .logo {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #6366f1, #a5b4fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #4ade80;
     }
 
     .nav-links {
@@ -67,168 +59,294 @@
       color: white;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      color: var(--primary);
+      color: #4ade80;
     }
 
-    /* Hero Section */
+    .cart {
+      position: relative;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart span {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ef4444;
+      color: white;
+      font-size: 0.8rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero */
     .hero {
-      height: 100vh;
+      margin-top: 80px;
+      background: linear-gradient(rgba(5,46,22,0.75), rgba(5,46,22,0.75)), url('https://images.unsplash.com/photo-1540420773420-336661e90f6b?q=80&w=1920') center/cover no-repeat;
+      height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      position: relative;
+      color: white;
     }
 
     .hero-content {
-      max-width: 800px;
-      padding: 0 20px;
-      z-index: 2;
+      max-width: 700px;
     }
 
     .hero h1 {
-      font-size: 4.5rem;
+      font-size: 3.8rem;
       margin-bottom: 1rem;
-      background: linear-gradient(90deg, #c4d0ff, #e0e7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
       font-size: 1.4rem;
-      color: #cbd5e1;
       margin-bottom: 2rem;
     }
 
     .btn {
-      padding: 14px 32px;
-      font-size: 1.1rem;
+      padding: 15px 40px;
+      font-size: 1.2rem;
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      transition: all 0.3s;
-      font-weight: 600;
+      font-weight: bold;
     }
 
     .btn-primary {
-      background: var(--primary);
-      color: white;
+      background: #4ade80;
+      color: #052e16;
     }
 
     .btn-primary:hover {
-      background: #4f46e5;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+      background: #22c55e;
+      transform: scale(1.05);
     }
 
-    /* Features */
+    /* Products Section */
     .section {
-      padding: 100px 5%;
+      padding: 80px 5%;
     }
 
     h2 {
       text-align: center;
-      font-size: 3rem;
+      font-size: 2.8rem;
       margin-bottom: 3rem;
-      color: white;
+      color: var(--dark);
     }
 
-    .features {
+    .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
-    .card {
-      background: rgba(255,255,255,0.05);
+    .product-card {
+      background: white;
       border-radius: 20px;
-      padding: 2.5rem;
-      transition: all 0.4s;
-      border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s;
     }
 
-    .card:hover {
+    .product-card:hover {
       transform: translateY(-15px);
-      background: rgba(99, 102, 241, 0.1);
-      border-color: var(--primary);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.15);
     }
 
-    .card h3 {
-      font-size: 1.6rem;
-      margin: 1.5rem 0;
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .add-to-cart {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      cursor: pointer;
     }
 
     /* Footer */
     footer {
-      background: #020617;
+      background: var(--dark);
+      color: white;
       padding: 60px 5% 30px;
       text-align: center;
     }
 
-    /* Responsive */
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      text-align: right;
+    }
+
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 3rem;
-      }
-      .nav-links {
-        display: none;
-      }
+      .hero h1 { font-size: 2.8rem; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">NEXUS</div>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Features</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- Header -->
+  <header>
+    <div class="top-bar">
+      <div class="logo">نيوهرب</div>
+      <ul class="nav-links">
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">المنتجات</a></li>
+        <li><a href="#">عن المتجر</a></li>
+        <li><a href="#">اتصل بنا</a></li>
+      </ul>
+      <div class="cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+      </div>
+    </div>
+  </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Welcome to the Future</h1>
-      <p>Build something amazing with modern design and powerful functionality.</p>
-      <button class="btn btn-primary" onclick="alert('Thank you for clicking! 🚀')">
-        Get Started Now
+      <h1>منتجات طبيعية نقية 100%</h1>
+      <p>زيوت عطرية • أعشاب • عسل • صابون طبيعي • مستحضرات تجميل عضوية</p>
+      <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+        تسوق الآن
       </button>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="section">
-    <h2>Why Choose Us</h2>
-    <div class="features">
-      <div class="card">
-        <h3>⚡ Lightning Fast</h3>
-        <p>Optimized performance that loads in under a second. Built for speed and efficiency.</p>
+  <!-- Products Section -->
+  <section class="section" id="products">
+    <h2>منتجاتنا الطبيعية</h2>
+    
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a9c?q=80&w=800" alt="عسل سدر">
+        <div class="product-info">
+          <h3>عسل سدر طبيعي</h3>
+          <p>عسل سدر يمني نقي - 500 جرام</p>
+          <div class="price">٩٩ ر.س</div>
+          <button class="add-to-cart" onclick="addToCart(this)">أضف إلى السلة</button>
+        </div>
       </div>
-      <div class="card">
-        <h3>🎨 Beautiful Design</h3>
-        <p>Modern, clean, and responsive design that looks perfect on every device.</p>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1625772299848-2b9b9c7f5f6e?q=80&w=800" alt="زيت زيتون">
+        <div class="product-info">
+          <h3>زيت زيتون بكر ممتاز</h3>
+          <p>زيت زيتون عضوي إسباني - 1 لتر</p>
+          <div class="price">٨٩ ر.س</div>
+          <button class="add-to-cart" onclick="addToCart(this)">أضف إلى السلة</button>
+        </div>
       </div>
-      <div class="card">
-        <h3>🔒 Secure & Reliable</h3>
-        <p>Enterprise-grade security with best practices built in from the start.</p>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=800" alt="صابون طبيعي">
+        <div class="product-info">
+          <h3>صابون زيت الزيتون واللافندر</h3>
+          <p>صابون طبيعي يدوي - ٦ قطع</p>
+          <div class="price">٧٥ ر.س</div>
+          <button class="add-to-cart" onclick="addToCart(this)">أضف إلى السلة</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1596040033229-5a4e0e6f2e2a?q=80&w=800" alt="شاي أعشاب">
+        <div class="product-info">
+          <h3>مزيج أعشاب الاسترخاء</h3>
+          <p>شاي بابونج + نعناع + زنجبيل - ١٠٠ جرام</p>
+          <div class="price">٤٥ ر.س</div>
+          <button class="add-to-cart" onclick="addToCart(this)">أضف إلى السلة</button>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Nexus. Made with ❤️ using pure HTML, CSS & JavaScript.</p>
+    <div class="footer-content">
+      <div>
+        <h3>نيوهرب</h3>
+        <p>متجر متخصص في المنتجات الطبيعية والعضوية</p>
+      </div>
+      <div>
+        <h3>روابط سريعة</h3>
+        <p>المنتجات • سياسة الخصوصية • شروط الاستخدام</p>
+      </div>
+      <div>
+        <h3>اتصل بنا</h3>
+        <p>📞 0555 123 456</p>
+        <p>📧 info@newherb.sa</p>
+      </div>
+    </div>
+    <p style="margin-top: 50px; opacity: 0.7;">© ٢٠٢٦ نيوهرب - جميع الحقوق محفوظة</p>
   </footer>
+
+  <script>
+    let cartCount = 0;
+
+    function addToCart(btn) {
+      cartCount++;
+      document.getElementById('cart-count').textContent = cartCount;
+      
+      // تغيير نص الزر مؤقتاً
+      const originalText = btn.textContent;
+      btn.textContent = "✓ تمت الإضافة";
+      btn.style.background = "#16a34a";
+      
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = "#15803d";
+      }, 1500);
+      
+      // يمكنك إضافة تنبيه أو نافذة سلة هنا
+      console.log("تم إضافة منتج إلى السلة");
+    }
+
+    // رسالة ترحيب عند تحميل الصفحة
+    window.onload = function() {
+      console.log("%cمرحبا بك في متجر نيوهرب للمنتجات الطبيعية 🌿", "color: #15803d; font-size: 16px; font-weight: bold;");
+    };
+  </script>
 
 </body>
 </html>
